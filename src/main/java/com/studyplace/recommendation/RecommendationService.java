@@ -57,6 +57,11 @@ public class RecommendationService {
                     && "MEDIUM".equals(place.getNoiseLevel())) {
                 score += 2;
             }
+
+            if (request.getPurpose().contains("독서")
+                    && "LOW".equals(place.getNoiseLevel())) {
+                score += 2;
+            }
         }
 
         if (request.getCondition() != null) {
@@ -76,6 +81,11 @@ public class RecommendationService {
                     && place.getTheme().contains("현실도피")) {
                 score += 2;
             }
+
+            if (request.getCondition().contains("조용")
+                    && "LOW".equals(place.getNoiseLevel())) {
+                score += 2;
+            }
         }
 
         if (request.getStudyTime() != null) {
@@ -83,6 +93,43 @@ public class RecommendationService {
                     && Boolean.TRUE.equals(place.getHasOutlet())) {
                 score += 2;
             }
+
+            if (request.getStudyTime().contains("1")
+                    && "SMALL".equals(place.getSizeLevel())) {
+                score += 1;
+            }
+
+            if (request.getStudyTime().contains("장시간")
+                    && Boolean.TRUE.equals(place.getHasOutlet())) {
+                score += 2;
+            }
+        }
+
+        if (request.getDistance() != null) {
+            if (request.getDistance().contains("10")) {
+                score += 1;
+            }
+
+            if (request.getDistance().contains("30")) {
+                score += 1;
+            }
+
+            if (request.getDistance().contains("1시간")) {
+                score += 1;
+            }
+
+            if (request.getDistance().contains("10")
+                    && Boolean.TRUE.equals(place.getHiddenSpot())) {
+                score += 1;
+            }
+        }
+
+        if ("HIGH".equals(place.getFocusLevel())) {
+            score += 2;
+        }
+
+        if ("LARGE".equals(place.getSizeLevel())) {
+            score += 1;
         }
 
         return score;
@@ -92,6 +139,16 @@ public class RecommendationService {
             Place place,
             RecommendationRequest request
     ) {
+        if ("HIGH".equals(place.getFocusLevel())
+                && Boolean.TRUE.equals(place.getHasOutlet())) {
+            return "집중도가 높고 콘센트가 있어 장시간 공부하기 좋아요.";
+        }
+
+        if ("LARGE".equals(place.getSizeLevel())
+                && "LOW".equals(place.getNoiseLevel())) {
+            return "공간이 넓고 조용해서 쾌적하게 공부하기 좋아요.";
+        }
+
         if ("LOW".equals(place.getNoiseLevel())
                 && Boolean.TRUE.equals(place.getHasOutlet())) {
             return "조용하고 콘센트가 있어 오래 집중해서 공부하기 좋아요.";

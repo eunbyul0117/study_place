@@ -8,4 +8,5 @@ public interface ReviewRepository extends JpaRepository<Review, Long> {
 
     List<Review> findByPlaceId(Long placeId);
 
+    long countByPlaceId(Long placeId);
 }

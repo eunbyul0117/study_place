@@ -22,15 +22,12 @@ public class PlaceCreateRequest {
     private Boolean hasOutlet;
 
     private String noiseLevel;
-
     private String sizeLevel;
-
     private String focusLevel;
 
     private String mood;
 
-    private String openTime;
-    private String closeTime;
+    private String operatingHours;
 
     private Boolean hiddenSpot;
 }

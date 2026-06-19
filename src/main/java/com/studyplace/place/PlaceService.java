@@ -1,8 +1,11 @@
 package com.studyplace.place;
 
+import com.studyplace.global.NotFoundException;
 import com.studyplace.place.dto.PlaceCreateRequest;
 import com.studyplace.place.dto.PlaceResponse;
 import com.studyplace.place.dto.PlaceUpdateRequest;
+import com.studyplace.review.Review;
+import com.studyplace.review.ReviewRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -13,6 +16,7 @@ import java.util.List;
 public class PlaceService {
 
     private final PlaceRepository placeRepository;
+    private final ReviewRepository reviewRepository;
 
     public PlaceResponse createPlace(PlaceCreateRequest request) {
 
@@ -30,21 +34,20 @@ public class PlaceService {
                 request.getSizeLevel(),
                 request.getFocusLevel(),
                 request.getMood(),
-                request.getOpenTime(),
-                request.getCloseTime(),
+                request.getOperatingHours(),
                 request.getHiddenSpot()
         );
 
         Place savedPlace = placeRepository.save(place);
 
-        return new PlaceResponse(savedPlace);
+        return toPlaceResponse(savedPlace);
     }
 
     public List<PlaceResponse> getPlaces() {
 
         return placeRepository.findAll()
                 .stream()
-                .map(PlaceResponse::new)
+                .map(this::toPlaceResponse)
                 .toList();
     }
 
@@ -52,10 +55,10 @@ public class PlaceService {
 
         Place place = placeRepository.findById(placeId)
                 .orElseThrow(() ->
-                        new IllegalArgumentException("장소를 찾을 수 없습니다.")
+                        new NotFoundException("장소를 찾을 수 없습니다.")
                 );
 
-        return new PlaceResponse(place);
+        return toPlaceResponse(place);
     }
 
     public PlaceResponse updatePlace(
@@ -64,7 +67,7 @@ public class PlaceService {
     ) {
         Place place = placeRepository.findById(placeId)
                 .orElseThrow(() ->
-                        new IllegalArgumentException("장소를 찾을 수 없습니다.")
+                        new NotFoundException("장소를 찾을 수 없습니다.")
                 );
 
         place.update(
@@ -81,21 +84,20 @@ public class PlaceService {
                 request.getSizeLevel(),
                 request.getFocusLevel(),
                 request.getMood(),
-                request.getOpenTime(),
-                request.getCloseTime(),
+                request.getOperatingHours(),
                 request.getHiddenSpot()
         );
 
         Place updatedPlace = placeRepository.save(place);
 
-        return new PlaceResponse(updatedPlace);
+        return toPlaceResponse(updatedPlace);
     }
 
     public void deletePlace(Long placeId) {
 
         Place place = placeRepository.findById(placeId)
                 .orElseThrow(() ->
-                        new IllegalArgumentException("장소를 찾을 수 없습니다.")
+                        new NotFoundException("장소를 찾을 수 없습니다.")
                 );
 
         placeRepository.delete(place);
@@ -105,7 +107,7 @@ public class PlaceService {
 
         return placeRepository.findByTheme(theme)
                 .stream()
-                .map(PlaceResponse::new)
+                .map(this::toPlaceResponse)
                 .toList();
     }
 
@@ -117,7 +119,27 @@ public class PlaceService {
                         keyword
                 )
                 .stream()
-                .map(PlaceResponse::new)
+                .map(this::toPlaceResponse)
                 .toList();
+    }
+
+    private PlaceResponse toPlaceResponse(Place place) {
+
+        List<Review> reviews = reviewRepository.findByPlaceId(place.getId());
+
+        Long reviewCount = (long) reviews.size();
+
+        Double averageRating = reviews.stream()
+                .mapToInt(Review::getRating)
+                .average()
+                .orElse(0.0);
+
+        averageRating = Math.round(averageRating * 10) / 10.0;
+
+        return new PlaceResponse(
+                place,
+                averageRating,
+                reviewCount
+        );
     }
 }

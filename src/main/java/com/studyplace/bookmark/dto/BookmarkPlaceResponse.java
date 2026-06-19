@@ -33,9 +33,7 @@ public class BookmarkPlaceResponse {
 
     private String mood;
 
-    private String openTime;
-
-    private String closeTime;
+    private String operatingHours;
 
     private Boolean hiddenSpot;
 
@@ -63,8 +61,7 @@ public class BookmarkPlaceResponse {
         this.noiseLevel = place.getNoiseLevel();
         this.mood = place.getMood();
 
-        this.openTime = place.getOpenTime();
-        this.closeTime = place.getCloseTime();
+        this.operatingHours = place.getOperatingHours();
 
         this.hiddenSpot = place.getHiddenSpot();
     }

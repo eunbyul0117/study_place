@@ -28,15 +28,12 @@ public class Place {
     private Boolean hasOutlet;
 
     private String noiseLevel;
-
     private String sizeLevel;
-
     private String focusLevel;
 
     private String mood;
 
-    private String openTime;
-    private String closeTime;
+    private String operatingHours;
 
     private Boolean hiddenSpot;
 
@@ -54,8 +51,7 @@ public class Place {
             String sizeLevel,
             String focusLevel,
             String mood,
-            String openTime,
-            String closeTime,
+            String operatingHours,
             Boolean hiddenSpot
     ) {
         this.name = name;
@@ -71,8 +67,7 @@ public class Place {
         this.sizeLevel = sizeLevel;
         this.focusLevel = focusLevel;
         this.mood = mood;
-        this.openTime = openTime;
-        this.closeTime = closeTime;
+        this.operatingHours = operatingHours;
         this.hiddenSpot = hiddenSpot;
     }
 
@@ -90,8 +85,7 @@ public class Place {
             String sizeLevel,
             String focusLevel,
             String mood,
-            String openTime,
-            String closeTime,
+            String operatingHours,
             Boolean hiddenSpot
     ) {
         this.name = name;
@@ -107,8 +101,7 @@ public class Place {
         this.sizeLevel = sizeLevel;
         this.focusLevel = focusLevel;
         this.mood = mood;
-        this.openTime = openTime;
-        this.closeTime = closeTime;
+        this.operatingHours = operatingHours;
         this.hiddenSpot = hiddenSpot;
     }
 }

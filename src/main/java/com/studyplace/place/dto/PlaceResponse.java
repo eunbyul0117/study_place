@@ -23,20 +23,23 @@ public class PlaceResponse {
     private Boolean hasOutlet;
 
     private String noiseLevel;
-
     private String sizeLevel;
-
     private String focusLevel;
 
     private String mood;
 
-    private String openTime;
-    private String closeTime;
+    private String operatingHours;
 
     private Boolean hiddenSpot;
 
-    public PlaceResponse(Place place) {
+    private Double averageRating;
+    private Long reviewCount;
 
+    public PlaceResponse(
+            Place place,
+            Double averageRating,
+            Long reviewCount
+    ) {
         this.id = place.getId();
 
         this.name = place.getName();
@@ -54,16 +57,20 @@ public class PlaceResponse {
         this.hasOutlet = place.getHasOutlet();
 
         this.noiseLevel = place.getNoiseLevel();
-
         this.sizeLevel = place.getSizeLevel();
-
         this.focusLevel = place.getFocusLevel();
 
         this.mood = place.getMood();
 
-        this.openTime = place.getOpenTime();
-        this.closeTime = place.getCloseTime();
+        this.operatingHours = place.getOperatingHours();
 
         this.hiddenSpot = place.getHiddenSpot();
+
+        this.averageRating = averageRating;
+        this.reviewCount = reviewCount;
+    }
+
+    public PlaceResponse(Place place) {
+        this(place, 0.0, 0L);
     }
 }
