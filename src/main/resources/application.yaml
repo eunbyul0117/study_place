@@ -9,5 +9,10 @@ spring:
       ddl-auto: update
     show-sql: true
 
+groq:
+  api-key: ${GROQ_API_KEY}
+  base-url: https://api.groq.com/openai/v1
+  model: llama-3.3-70b-versatile
+
 server:
   port: 8080

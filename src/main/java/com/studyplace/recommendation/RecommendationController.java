@@ -8,12 +8,13 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/recommendations")
+@RequestMapping("/SPOTYU/recommendations")
 @RequiredArgsConstructor
 @CrossOrigin(origins = "*")
 public class RecommendationController {
 
     private final RecommendationService recommendationService;
+    private final GroqClient groqClient;
 
     @PostMapping
     public List<RecommendationResponse> recommendPlaces(
@@ -21,4 +22,5 @@ public class RecommendationController {
     ) {
         return recommendationService.recommendPlaces(request);
     }
+
 }
