@@ -21,16 +21,18 @@ public class VisitHistory {
 
     private LocalDateTime visitedAt;
 
-    private String seatStatus;   // 자리 많았어요, 적당했어요, 거의 없었어요
+    @Enumerated(EnumType.STRING)
+    private SeatStatus seatStatus;
 
-    private String noiseStatus;  // 매우 조용해요, 보통이에요, 시끄러워요
+    @Enumerated(EnumType.STRING)
+    private NoiseStatus noiseStatus;
 
     public VisitHistory(
             Long userId,
             Long placeId,
             LocalDateTime visitedAt,
-            String seatStatus,
-            String noiseStatus
+            SeatStatus seatStatus,
+            NoiseStatus noiseStatus
     ) {
         this.userId = userId;
         this.placeId = placeId;

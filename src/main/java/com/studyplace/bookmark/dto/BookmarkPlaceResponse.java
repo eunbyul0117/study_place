@@ -1,6 +1,8 @@
 package com.studyplace.bookmark.dto;
 
 import com.studyplace.bookmark.Bookmark;
+import com.studyplace.place.Category;
+import com.studyplace.place.NoiseLevel;
 import com.studyplace.place.Place;
 import lombok.Getter;
 
@@ -19,7 +21,7 @@ public class BookmarkPlaceResponse {
 
     private Double longitude;
 
-    private String category;
+    private Category category;
 
     private String theme;
 
@@ -29,7 +31,7 @@ public class BookmarkPlaceResponse {
 
     private Boolean hasOutlet;
 
-    private String noiseLevel;
+    private NoiseLevel noiseLevel;
 
     private String mood;
 

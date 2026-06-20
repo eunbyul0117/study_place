@@ -1,5 +1,9 @@
 package com.studyplace.place.dto;
 
+import com.studyplace.place.Category;
+import com.studyplace.place.FocusLevel;
+import com.studyplace.place.NoiseLevel;
+import com.studyplace.place.SizeLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -13,7 +17,7 @@ public class PlaceUpdateRequest {
     private Double latitude;
     private Double longitude;
 
-    private String category;
+    private Category category;
     private String theme;
 
     private String description;
@@ -21,9 +25,9 @@ public class PlaceUpdateRequest {
 
     private Boolean hasOutlet;
 
-    private String noiseLevel;
-    private String sizeLevel;
-    private String focusLevel;
+    private NoiseLevel noiseLevel;
+    private SizeLevel sizeLevel;
+    private FocusLevel focusLevel;
 
     private String mood;
 

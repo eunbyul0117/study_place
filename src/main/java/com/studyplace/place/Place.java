@@ -19,7 +19,9 @@ public class Place {
     private Double latitude;
     private Double longitude;
 
-    private String category;
+    @Enumerated(EnumType.STRING)
+    private Category category;
+
     private String theme;
 
     private String description;
@@ -27,9 +29,14 @@ public class Place {
 
     private Boolean hasOutlet;
 
-    private String noiseLevel;
-    private String sizeLevel;
-    private String focusLevel;
+    @Enumerated(EnumType.STRING)
+    private NoiseLevel noiseLevel;
+
+    @Enumerated(EnumType.STRING)
+    private SizeLevel sizeLevel;
+
+    @Enumerated(EnumType.STRING)
+    private FocusLevel focusLevel;
 
     private String mood;
 
@@ -42,14 +49,14 @@ public class Place {
             String address,
             Double latitude,
             Double longitude,
-            String category,
+            Category category,
             String theme,
             String description,
             String imageUrl,
             Boolean hasOutlet,
-            String noiseLevel,
-            String sizeLevel,
-            String focusLevel,
+            NoiseLevel noiseLevel,
+            SizeLevel sizeLevel,
+            FocusLevel focusLevel,
             String mood,
             String operatingHours,
             Boolean hiddenSpot
@@ -76,14 +83,14 @@ public class Place {
             String address,
             Double latitude,
             Double longitude,
-            String category,
+            Category category,
             String theme,
             String description,
             String imageUrl,
             Boolean hasOutlet,
-            String noiseLevel,
-            String sizeLevel,
-            String focusLevel,
+            NoiseLevel noiseLevel,
+            SizeLevel sizeLevel,
+            FocusLevel focusLevel,
             String mood,
             String operatingHours,
             Boolean hiddenSpot

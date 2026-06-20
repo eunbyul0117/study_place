@@ -1,5 +1,7 @@
 package com.studyplace.visit.dto;
 
+import com.studyplace.visit.NoiseStatus;
+import com.studyplace.visit.SeatStatus;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -13,7 +15,7 @@ public class VisitHistoryCreateRequest {
 
     private String visitedAt;    // 예: 2026-09-09T11:40:00
 
-    private String seatStatus;
+    private SeatStatus seatStatus;
 
-    private String noiseStatus;
+    private NoiseStatus noiseStatus;
 }

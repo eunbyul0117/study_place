@@ -1,5 +1,6 @@
 package com.studyplace.review;
 
+import com.studyplace.place.NoiseLevel;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -19,7 +20,8 @@ public class Review {
 
     private Integer rating;
 
-    private String noiseLevel;
+    @Enumerated(EnumType.STRING)
+    private NoiseLevel noiseLevel;
 
     private String content;
 
@@ -27,7 +29,7 @@ public class Review {
             Long placeId,
             Long userId,
             Integer rating,
-            String noiseLevel,
+            NoiseLevel noiseLevel,
             String content
     ) {
         this.placeId = placeId;
@@ -36,9 +38,10 @@ public class Review {
         this.noiseLevel = noiseLevel;
         this.content = content;
     }
+
     public void update(
             Integer rating,
-            String noiseLevel,
+            NoiseLevel noiseLevel,
             String content
     ) {
         this.rating = rating;

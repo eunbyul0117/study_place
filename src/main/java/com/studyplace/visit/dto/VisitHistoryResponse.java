@@ -1,5 +1,7 @@
 package com.studyplace.visit.dto;
 
+import com.studyplace.visit.NoiseStatus;
+import com.studyplace.visit.SeatStatus;
 import com.studyplace.visit.VisitHistory;
 import lombok.Getter;
 
@@ -16,9 +18,9 @@ public class VisitHistoryResponse {
 
     private LocalDateTime visitedAt;
 
-    private String seatStatus;
+    private SeatStatus seatStatus;
 
-    private String noiseStatus;
+    private NoiseStatus noiseStatus;
 
     public VisitHistoryResponse(
             VisitHistory visitHistory
