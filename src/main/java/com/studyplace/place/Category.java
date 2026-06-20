@@ -1,5 +1,7 @@
 package com.studyplace.place;
 
 public enum Category {
-    CAFE
+    CAFE,
+    LIBRARY,
+    STUDY_CAFE
 }
