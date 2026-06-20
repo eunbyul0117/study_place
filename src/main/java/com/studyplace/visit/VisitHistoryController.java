@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/visit-histories")
+@RequestMapping("/SPOTYU/visit-histories")
 @RequiredArgsConstructor
 @CrossOrigin(origins = "*")
 public class VisitHistoryController {

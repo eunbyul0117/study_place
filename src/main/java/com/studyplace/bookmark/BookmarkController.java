@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/bookmarks")
+@RequestMapping("/SPOTYU/bookmarks")
 @RequiredArgsConstructor
 @CrossOrigin(origins = "*")
 public class BookmarkController {
