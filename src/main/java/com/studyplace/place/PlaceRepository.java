@@ -12,4 +12,6 @@ public interface PlaceRepository extends JpaRepository<Place, Long> {
             String nameKeyword,
             String addressKeyword
     );
+
+    List<Place> findByHiddenSpotTrue();
 }

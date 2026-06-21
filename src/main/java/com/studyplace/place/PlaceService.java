@@ -105,6 +105,13 @@ public class PlaceService {
 
     public List<PlaceResponse> getPlacesByTheme(String theme) {
 
+        if ("비밀섬".equals(theme)) {
+            return placeRepository.findByHiddenSpotTrue()
+                    .stream()
+                    .map(this::toPlaceResponse)
+                    .toList();
+        }
+
         return placeRepository.findByTheme(theme)
                 .stream()
                 .map(this::toPlaceResponse)
